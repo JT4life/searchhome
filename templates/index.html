@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% static "images" as baseurl %}
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--    <link rel="stylesheet" type="text/css" href="{% static 'css/main1.css' %}">-->
+</head>
+<body>
+<div class="container" align="center">
+  <div class="row row-cols-2">
+    {% for property in queryset %}
+       <div class="col">
+                 <div class="p-4 md:w-1/3 sm:mb-0 mb-6">
+        <div class="rounded-lg h-64 overflow-hidden">
+          <img alt="content" class="object-cover object-center h-full w-full" src="{% if property.images %}{{ property.images.url }}{% else %}{% static 'images/no_image.png' %}{% endif %}">
+        </div>
+        <h2 class="text-xl font-medium title-font text-gray-900 mt-5">{{property.name}}</h2>
+        <p class="text-base leading-relaxed mt-2">Address {{property.address}}</p>
+        <p class="text-base leading-relaxed mt-2">Price ${{property.price}}</p>
+                     <a class="text-indigo-500 inline-flex items-center mt-3"><a href="{% url 'detail' property.name %}"><font color="#0400fc">Click here for more details</font>
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+       </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+
+<br/>
+<div class="container" align="center">
+    <div class="pagination">
+        <font class="step-links">
+            {% if queryset.has_previous %}
+            <a href="?{{ page_request_var }}={{ queryset.previous_page_number }}"><font color ="blue">Previous Page</font></a> <font color ="blue">|</font>
+            {% endif %}
+
+            <span class="current">
+                <font color ="black">Current Page {{ queryset.number }}</font>
+            </span>
+
+            {% if queryset.has_next %}
+            <font color ="blue">|</font> <a href="?{{ page_request_var }}={{ queryset.next_page_number }}"><font color ="blue">Next Page</font></a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+</body>
+{% endblock %}

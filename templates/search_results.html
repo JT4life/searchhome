@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">-->
+
+</head>
+
+<body>
+<h2 align="center">Results for your search</h2>
+<div class="container">
+  <div class="row row-cols-2">
+    {% for restaurant in queryset %}
+       <div class="col">
+
+							<div class="container" align="center">
+								<img src="{% if restaurant.images %}{{ restaurant.images.url }}{% else %}{% static 'images/no_image.png' %}{% endif %}" width="350" height="200">
+							</div>
+							<div class="container" align="center">
+								<div class="container"><a href="{% url 'detail' restaurant.name %}"><p>Housing: {{restaurant.name}} <br /><font color="#0400fc">Click here for more details</font></p>
+								</a></div>
+								<div class="container"><p>Address {{restaurant.address}}</p></div>
+								<div class="container"><p>Price ${{restaurant.price}}</p></div>
+							</div>
+       </div>
+    {% endfor %}
+  </div>
+</div>
+
+</body>
+{% endblock %}

@@ -1,0 +1,20 @@
+body {
+   background: url('/static/images/housing.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+h1 {
+  color: #232c3b;
+}
+h3 {
+  color: #232c3b;
+}
+h4 {
+  color: #232c3b;
+}
+p {
+  color: #232c3b;
+}
