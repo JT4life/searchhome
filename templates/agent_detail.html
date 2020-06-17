@@ -12,28 +12,23 @@
 <section class="text-gray-700 body-font">
   <div class="container px-5 py-24 mx-auto flex flex-wrap">
     <div class="lg:w-1/2 w-full mb-10 lg:mb-0 rounded-lg overflow-hidden">
-      <img alt="feature" class="object-cover object-center h-full w-full" src="{% if post.images %}{{ post.images.url }}{% else %}{% static 'images/no_image.png' %}{% endif %}">
+      <img alt="feature" class="object-cover object-center h-full w-full" src="{% if post.images %}{{ post.images.url }}{% else %}{% static 'images/no_image.png' %}{% endif %}" >
     </div>
     <div class="flex flex-col flex-wrap lg:py-6 -mb-10 lg:w-1/2 lg:pl-12 lg:text-left text-center">
       <div class="flex flex-col mb-10 lg:items-start items-center">
         <div class="w-12 h-12 inline-flex items-center justify-center mb-5">
         </div>
         <div class="flex-grow">
-          <h2 class="text-gray-900 text-lg title-font font-medium mb-3">Housing Info: {{ post.name }}</h2>
-          <h2 class="text-gray-900 text-lg title-font font-medium mb-3">Details: {{ post.details }}</h2>
-			<h2 class="text-gray-900 text-lg title-font font-medium mb-3">Price: ${{post.price}}</h2>
-			<h2 class="text-gray-900 text-lg title-font font-medium mb-3">Location: {{post.location}}</h2>
-			<h2 class="text-gray-900 text-lg title-font font-medium mb-3">Address: {{post.address}}</h2>
-			<h2 class="text-gray-900 text-lg title-font font-medium mb-3">Type: {{post.housing}}</h2>
-			<h2 class="text-gray-900 text-lg title-font font-medium mb-3">Sale/Rent: {{post.purpose}}</h2>
-			<h2 class="text-gray-900 text-lg title-font font-medium mb-3">Agent: {{post.agent_name}}</h2>
+          <h2 class="text-gray-900 text-lg title-font font-medium mb-3">Agent Name: {{ post.name }}</h2>
+          <h2 class="text-gray-900 text-lg title-font font-medium mb-3">Phone: {{ post.phone }}</h2>
+			<h2 class="text-gray-900 text-lg title-font font-medium mb-3">Email: {{ post.email }}</h2>
             </svg>
           </a>
         </div>
       </div>
 
         <div class="container">
-      <h2 class="text-gray-900 text-lg title-font font-medium mb-3">Interested in this property?</h2>
+      <h2 class="text-gray-900 text-lg title-font font-medium mb-3">Have questions or need help?</h2>
               <form action="{% url 'sendMessage' %}" method="post">
             {% csrf_token %}
       <input class="bg-white rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4" type="email" placeholder="Your Email" name="email"><br/>

@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
-from .models import Property, SendMessage
+from .models import Property, SendMessage, Agent
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 from django.core.mail import send_mail
@@ -24,10 +24,33 @@ def index(request):
     }
     return render(request, 'index.html', context)
 
+def agents(request):
+    propertys = Agent.objects.all().order_by('-name')[:10]
+    paginator = Paginator(propertys, 4)
+    page_request_var = 'page'
+    page = request.GET.get(page_request_var)
+    try:
+        paginated_queryset = paginator.page(page)
+    except PageNotAnInteger:
+        paginated_queryset = paginator.page(1)
+    except EmptyPage:
+        paginated_queryset = paginator.page(paginator.num_pages)
+    context = {
+        'propertys': propertys,
+        'queryset': paginated_queryset,
+        'page_request_var': page_request_var,
+    }
+    return render(request, 'agents.html', context)
+
 def detail(request,name):
     post_list = Property.objects.filter(name=name)
     context = { 'post_list': post_list}
     return render(request, 'details.html', context)
+
+def agent_detail(request, name):
+    post_list = Agent.objects.filter(name=name)
+    context = {'post_list':post_list}
+    return render(request, 'agent_detail.html', context)
 
 def search(request):
     #queryset = Restaurant.objects.all()

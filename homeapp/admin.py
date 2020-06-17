@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Property, SendMessage
+from .models import Property, SendMessage, Agent
 # Register your models here.
 class HomeAdmin(admin.ModelAdmin):
     list_display = ('name','type_home_choices','details','location','address','price','purpose')
@@ -9,3 +9,4 @@ class HomeAdmin(admin.ModelAdmin):
 
 admin.site.register(Property, HomeAdmin)
 admin.site.register(SendMessage)
+admin.site.register(Agent)

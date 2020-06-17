@@ -8,25 +8,22 @@
 </head>
 
 <body>
-<h2 align="center">Results for your search</h2>
-<div class="container">
-  <div class="row row-cols-2">
+<h2 class="text-xl font-medium title-font text-gray-900 mt-5" align="center">Results from your search...</h2>
+<br/>
     {% for restaurant in queryset %}
-       <div class="col">
-
+       <div class="col" align="center">
 							<div class="container" align="center">
 								<img src="{% if restaurant.images %}{{ restaurant.images.url }}{% else %}{% static 'images/no_image.png' %}{% endif %}" width="350" height="200">
 							</div>
 							<div class="container" align="center">
 								<div class="container"><a href="{% url 'detail' restaurant.name %}"><p>Housing: {{restaurant.name}} <br /><font color="#0400fc">Click here for more details</font></p>
 								</a></div>
-								<div class="container"><p>Address {{restaurant.address}}</p></div>
-								<div class="container"><p>Price ${{restaurant.price}}</p></div>
+								<p>Address {{restaurant.address}}</p>
+								<p>Price ${{restaurant.price}}</p>
 							</div>
        </div>
-    {% endfor %}
-  </div>
-</div>
+<br/>
 
+    {% endfor %}
 </body>
 {% endblock %}

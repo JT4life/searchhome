@@ -8,6 +8,8 @@
 </head>
 <body>
 <header class="text-gray-700 body-font">
+  <div class="bg-gray-200">
+    <div class="container px-1 py-1 mx-auto flex items-center sm:flex-row flex-col">
   <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
     <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
 <!--      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">-->
@@ -24,9 +26,11 @@
       <a class="mr-5 hover:text-gray-900" href="/account/register"><strong>Register</strong></a>
       <a class="mr-5 hover:text-gray-900" href="/account/login"><strong>Login</strong></a>
       {%endif%}
+      <a class="mr-5 hover:text-gray-900" href="{% url 'agents' %}"><strong>Agents</strong></a>
     </nav>
     <form action="{% url 'search' %}" class="form-inline my-2 my-lg-0" >
-      <input class="form-control mr-sm-2" type="text" name="q" placeholder="Type your search here..." aria-label="Search">
+      <!-- Search form -->
+      <input class="form-control" type="text" name="q" placeholder="Type your search here..." aria-label="Search">
       <button class="btn" type="submit" ><strong>Search</strong></button>
     </form>
 <!--    <button class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none hover:bg-gray-300 rounded text-base mt-4 md:mt-0">Button-->
@@ -34,6 +38,8 @@
 <!--        <path d="M5 12h14M12 5l7 7-7 7"></path>-->
 <!--      </svg>-->
 <!--    </button>-->
+  </div>
+    </div>
   </div>
 </header>
 {% block content %}
